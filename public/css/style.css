@@ -1,0 +1,59 @@
+.Title {
+    color: rgb(250, 2, 2);
+    font-size: 20px;
+    font-family: 'Lustria', serif;
+    font-weight: 600;
+
+}
+
+code {
+    background-color: #292D3E;
+    --theme-selection-background: #7580B850;
+}
+
+pre code.torchlight {
+    --tw-bg-opacity: 1 !important;
+    background-color: rgb(37 42 55/var(--tw-bg-opacity)) !important;
+    display: block;
+    min-width: -webkit-max-content;
+    min-width: -moz-max-content;
+    min-width: max-content;
+    padding-bottom: 1rem;
+    padding-top: 1rem;
+    border-radius: 5px;
+}
+
+.relative {
+    position: relative !important;
+}
+
+.docs_main code {
+    color: #232323;
+    font-size: .8rem;
+    font-weight: 500;
+    line-height: 1.9;
+}
+
+.code-block-wrapper .copyBtn {
+    color: #ffffff;
+    --tw-bg-opacity: 1 !important;
+    background-color: rgb(37 42 55/var(--tw-bg-opacity)) !important;
+    border: none;
+    position: absolute;
+    right: 0.5rem;
+    top: 0.5rem;
+}
+
+pre code.torchlight .line {
+    padding-left: 1rem;
+    padding-right: 1rem;
+}
+
+.tooltip-inner {
+    padding: 3px 8px;
+    color: #fff;
+    text-align: center;
+    background-color: #232323 !important;
+    border-radius: .25rem;
+    margin-bottom: 3px
+}

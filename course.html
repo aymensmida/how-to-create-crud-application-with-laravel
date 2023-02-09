@@ -1,0 +1,715 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <title>Crud App</title>
+<link rel="stylesheet" href="./public/css/style.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700&display=swap" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Lustria&family=PT+Sans+Narrow:wght@400;700&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css"
+        integrity="sha384-xOolHFLEh07PJGoPkLv1IbcEPTNtaed2xpHsD9ESMhqIYd0nLMwNLD69Npy4HI+N" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.slim.min.js"
+        integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous">
+    </script>
+
+</head>
+
+<body>
+
+    <div class="container-fluid pl-5 pr-5">
+        <div class="row">
+            <div class="col-12 text-center">
+                <h1 class="text-primary">
+                    Laravel 8 Crud App</h1>
+            </div>
+            <div class="col-lg-12">
+                <h2 class="Title">I-Install Laravel 8</h2>
+                <div class="alert alert-warning" role="alert">
+                    Before creating your first Laravel project, you should ensure that your local machine has PHP and
+                    Composer installed. If you are developing on macOS, PHP and <a
+                        href="https://getcomposer.org/">Composer</a> can be installed via <a
+                        href="https://brew.sh/">Homebrew</a> .
+                    In addition, we recommend <a href="https://nodejs.org/en/">installing Node and NPM</a> .
+
+                    After you have installed PHP and Composer, you may create a new Laravel project via the Composer
+                    <span class="text-dark">create-project</span> command:
+                </div>
+
+
+            </div>
+
+            <div class="col-md-8">
+                <h6>For the Laravel 8 CRUD generator process, first you need to install Laravel 8 with the help of the
+                    following command:
+
+                </h6>
+                <div class="relative code-block-wrapper">
+                    <pre><code class="torchlight" ><div class="line"><span style="color: #BFC7D5;" id="cmd-1">composer create-project laravel/laravel:^8.0 first-app</span></div></code></pre>
+                    <button id="btn-1" data-toggle="tooltip" data-placement="top"
+                        onclick="CopyToClipboard('cmd-1','btn-1')" class="md:block hidden copyBtn"
+                        title="Copy to Clipboard">
+                         <i class="fa fa-clipboard"></i>
+                    </button>
+                </div>
+
+
+            </div>
+
+        </div>
+        <div class="row mt-2">
+            <div class="col-12">
+                <h2 class="Title">II-Database configuration :</h2>
+            </div>
+
+            <div class="col-md-8">
+                <h6>Add following lines in <span class="text-primary"> .env </span> file</h6>
+                <img src="./public/images/database_config.png" class="img-fluid">
+            </div>
+        </div>
+        <div class="row mt-2">
+            <div class="col-12">
+                <h2 class="Title">III-Create a table :</h2>
+            </div>
+
+            <div class="col-md-8">
+
+                <div class="relative code-block-wrapper">
+                    <pre><code class="torchlight language-HTML"  ><div class="line"><span style="color: #BFC7D5;" id="cmd-2">php artisan make:migration create_books_table</span></div></code></pre>
+                    <button id="btn-2" data-toggle="tooltip" data-placement="top"
+                        onclick="CopyToClipboard('cmd-2','btn-2')" class="md:block hidden copyBtn"
+                        title="Copy to Clipboard">
+                         <i class="fa fa-clipboard"></i>
+                    </button>
+
+                </div>
+                <h6>Now open the migration file and add the code given below</h6>
+                <div class="relative code-block-wrapper">
+                    <pre><code class="torchlight" ><div class="line"><span style="color: #BFC7D5;" id="cmd-3">   &lt;?php
+
+    use Illuminate\Database\Migrations\Migration;
+    use Illuminate\Database\Schema\Blueprint;
+    use Illuminate\Support\Facades\Schema;
+
+    class CreateBooksTable extends Migration
+    {
+        /**
+         * Run the migrations.
+         *
+         * @return    void
+         */
+        public function up()
+        {
+            Schema::create('books', function (Blueprint $table) {
+                $table->id();
+                $table->string('title');
+                $table->text('description');
+                $table->string('author');
+                $table->string('price');
+                $table->timestamps();
+            });
+        }
+
+        /**
+         * Reverse the migrations.
+         *
+         * @return    void
+         */
+        public function down()
+        {
+            Schema::dropIfExists('books');
+        }
+    }
+                        </div></code></pre>
+                    <button id="btn-3" data-toggle="tooltip" data-placement="top"
+                        onclick="CopyToClipboard('cmd-3','btn-3')" class="md:block hidden copyBtn"
+                        title="Copy to Clipboard">
+                         <i class="fa fa-clipboard"></i>
+                    </button>
+
+                </div>
+                <h6>
+                    Now you have to run migration using the below command
+                </h6>
+                <div class="relative code-block-wrapper">
+                    <pre><code class="torchlight language-HTML"  ><div class="line"><span style="color: #BFC7D5;" id="cmd-4">php artisan migrate</span></div></code></pre>
+                    <button id="btn-4" data-toggle="tooltip" data-placement="top"
+                        onclick="CopyToClipboard('cmd-4','btn-4')" class="md:block hidden copyBtn"
+                        title="Copy to Clipboard">
+                         <i class="fa fa-clipboard"></i>
+                    </button>
+
+                </div>
+            </div>
+
+        </div>
+        <div class="row mt-2">
+            <div class="col-12">
+                <h2 class="Title">IV-Add Resource Route :</h2>
+            </div>
+
+            <div class="col-md-8">
+                <div class="relative code-block-wrapper">
+                    <pre><code class="torchlight language-HTML"  ><div class="line"><span style="color: #BFC7D5;" id="cmd-5">
+ use App\Http\Controllers\BookController;
+
+ Route::resource('books',BookController::class);</span></div></code></pre>
+                    <button id="btn-5" data-toggle="tooltip" data-placement="top"
+                        onclick="CopyToClipboard('cmd-5','btn-5')" class="md:block hidden copyBtn"
+                        title="Copy to Clipboard">
+                         <i class="fa fa-clipboard"></i>
+                    </button>
+
+                </div>
+            </div>
+
+        </div>
+        <div class="row mt-2">
+            <div class="col-12">
+                <h2 class="Title">V- Add Controller and Model :</h2>
+            </div>
+
+            <div class="col-md-8">
+                <div class="relative code-block-wrapper">
+                    <pre><code class="torchlight language-HTML"  ><div class="line"><span style="color: #BFC7D5;" id="cmd-6">php artisan make:controller BookController --resource --model=Book</span></div></code></pre>
+                    <button id="btn-6" data-toggle="tooltip" data-placement="top"
+                        onclick="CopyToClipboard('cmd-6','btn-6')" class="md:block hidden copyBtn"
+                        title="Copy to Clipboard">
+                         <i class="fa fa-clipboard"></i>
+                    </button>
+
+                </div>
+
+                <h6>Go to the path:<span class="text-primary">app/Http/Controllers/UserController.php</span> And update
+                    the code as follows</h6>
+                <div class="relative code-block-wrapper">
+                    <pre><code class="torchlight language-HTML"  ><div class="line"><span style="color: #BFC7D5;" id="cmd-7">&lt;?php
+namespace App\Http\Controllers;
+
+use App\Models\Book;
+use Illuminate\Http\Request;
+
+class BookController extends Controller
+{
+    /**
+     * Display a listing of the resource.
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function index()
+    {
+        $books=Book::paginate(5);
+       return view('books/index',compact('books'));
+    }
+
+    /**
+     * Show the form for creating a new resource.
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function create()
+    {
+        return view('books/create');
+    }
+
+    /**
+     * Store a newly created resource in storage.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @return \Illuminate\Http\Response
+     */
+    public function store(Request $request)
+    {
+        $request->validate([
+            'title' => 'required',
+            'author' => 'required',
+            'price' => 'required',
+        ]);
+        Book::create($request->all());
+        return redirect()->route('books.index')
+                        ->with('success','Book created successfully.');
+    }
+
+    /**
+     * Display the specified resource.
+     *
+     * @param  \App\Models\Book  $book
+     * @return \Illuminate\Http\Response
+     */
+    public function show(Book $book)
+    {
+        return view('books.show',compact('book'));
+    }
+
+    /**
+     * Show the form for editing the specified resource.
+     *
+     * @param  \App\Models\Book  $book
+     * @return \Illuminate\Http\Response
+     */
+    public function edit(Book $book)
+    {
+        return view('books.edit',compact('book'));
+    }
+
+    /**
+     * Update the specified resource in storage.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @param  \App\Models\Book  $book
+     * @return \Illuminate\Http\Response
+     */
+    public function update(Request $request, Book $book)
+    {
+        $request->validate([
+            'title' => 'required',
+            'author' => 'required',
+            'price' => 'required',
+        ]);
+        $book->update($request->all());
+        return redirect()->route('books.index')
+                        ->with('success','User updated successfully');
+    }
+
+    /**
+     * Remove the specified resource from storage.
+     *
+     * @param  \App\Models\Book  $book
+     * @return \Illuminate\Http\Response
+     */
+    public function destroy(Book $book)
+    {
+        $book->delete();
+
+        return redirect()->route('books.index')
+                        ->with('success','Book deleted successfully');
+    }
+}
+
+                </span></div></code></pre>
+                    <button id="btn-7" data-toggle="tooltip" data-placement="top"
+                        onclick="CopyToClipboard('cmd-7','btn-7')" class="md:block hidden copyBtn"
+                        title="Copy to Clipboard">
+                         <i class="fa fa-clipboard"></i>
+                    </button>
+
+                </div>
+                <h6>Now find “app/Models/Book.php” and put the below content in Book.php file:</h6>
+                <div class="relative code-block-wrapper">
+                    <pre><code class="torchlight language-HTML"  ><div class="line"><span style="color: #BFC7D5;" id="cmd-8"> &lt;?php
+                namespace App\Models;
+
+                use Illuminate\Database\Eloquent\Factories\HasFactory;
+                use Illuminate\Database\Eloquent\Model;
+
+               class Book extends Model
+            {
+            use HasFactory;
+             <span class="text-warning"> protected $fillable = [
+                   'title',
+                   'description',
+                   'author',
+                   'price',];
+</span>
+            }
+                </span></div></code></pre>
+                    <button id="btn-8" data-toggle="tooltip" data-placement="top"
+                        onclick="CopyToClipboard('cmd-8','btn-8')" class="md:block hidden copyBtn"
+                        title="Copy to Clipboard">
+                         <i class="fa fa-clipboard"></i>
+                    </button>
+
+                </div>
+            </div>
+
+        </div>
+        <div class="row mt-2">
+            <div class="col-12">
+                <h2 class="Title">VI-Add Blade Files :</h2>
+            </div>
+
+            <div class="col-md-12">
+                <img src="./public/images/create_blade_files.png" class="img-fluid">
+            </div>
+        </div>
+        <div class="row mt-2">
+            <div class="col-md-12">
+                <h6 class="text-primary">layout.blade.php
+                </h6>
+                <p class="text-success">Path – resources/views/books/layout.blade.php</p>
+                <div class="relative code-block-wrapper">
+                    <pre><code class="torchlight language-HTML"  ><div class="line"><span style="color: #BFC7D5;" id="cmd-9">
+ &lt;!DOCTYPE html&gt;
+&lt;html&gt;
+&lt;head&gt;
+  &lt;title&gt;.Laravel 8 CRUD Application &lt;/title&gt;
+ &lt;link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css" integrity="sha384-xOolHFLEh07PJGoPkLv1IbcEPTNtaed2xpHsD9ESMhqIYd0nLMwNLD69Npy4HI+N" crossorigin="anonymous"&gt;
+  &lt;/head&gt;
+  &lt;body&gt;
+  &lt;div class="container"&gt;
+   <span>@</span>yield('content')
+   &lt;/div&gt;
+   &lt;script src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"&gt;.&lt;/script&gt;
+   &lt;script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js" integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN" crossorigin="anonymous"&gt;.&lt;/script&gt;
+   &lt;script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/js/bootstrap.min.js" integrity="sha384-+sLIOodYLS7CIrQpBjl+C7nPvqq+FbNUBDunl/OZv93DB7Ln/533i8e/mZXLi/P+" crossorigin="anonymous"&gt;.&lt;/script&gt;
+    &lt;/body&gt;
+  &lt;/html&gt;
+
+                    </span></div></code></pre>
+                    <button id="btn-9" data-toggle="tooltip" data-placement="top"
+                        onclick="CopyToClipboard('cmd-9','btn-9')" class="md:block hidden copyBtn"
+                        title="Copy to Clipboard">
+                         <i class="fa fa-clipboard"></i>
+                    </button>
+
+                </div>
+            </div>
+        </div>
+        <div class="row mt-2">
+            <div class="col-md-12">
+                <h6 class="text-primary">index.blade.php
+                </h6>
+                <p class="text-success">Path – resources/views/books/index.blade.php</p>
+                <div class="relative code-block-wrapper">
+                    <pre><code class="torchlight language-HTML"  ><div class="line"><span style="color: #BFC7D5;" id="cmd-10">
+                        <span>@</span>extends('books.layout')
+
+                        <span>@</span>section('content')
+                            &lt;div class="row"&gt;
+                                &lt;h1 class="mx-auto text-primary mb-3"&gt;My library&lt;/h1&gt;
+                            &lt;/div&gt;
+                            &lt;div class="row"&gt;
+                                &lt;a class="btn btn-success ml-auto  mb-3 mr-5" href="{{ route('books.create') }}"&gt; Create New book&lt;/a&gt;
+                            &lt;/div&gt;
+                            <span>@</span>if (<span>$</span>message = Session::get('success'))
+                                &lt;div class="alert alert-success"&gt;
+                                    &lt;p&gt;{{ <span>$</span>message }}&lt;/p&gt;
+                                &lt;/div&gt;
+                            <span>@</span>endif
+                            &lt;div class="row"&gt;
+                                &lt;div class="col-lg-10 mx-auto"&gt;
+                                    &lt;div class="table-responsive"&gt;
+                                        &lt;table class="table table-bordered"&gt;
+                                            &lt;tr&gt;
+                                                &lt;th&gt;No&lt;/th&gt;
+                                                &lt;th&gt;Title&lt;/th&gt;
+                                                &lt;th&gt;Author&lt;/th&gt;
+                                                &lt;th&gt;Price&lt;/th&gt;
+                                                &lt;th class="text-center"&gt;Action&lt;/th&gt;
+                                            &lt;/tr&gt;
+                                            <span>@</span>foreach (<span>$</span>books as <span>$</span>book)
+                                                &lt;tr&gt;
+                                                    &lt;td&gt;{{ <span>$</span>book-&gt;id }}&lt;/td&gt;
+                                                    &lt;td&gt;{{ <span>$</span>book-&gt;title }}&lt;/td&gt;
+                                                    &lt;td&gt;{{ <span>$</span>book-&gt;author }}&lt;/td&gt;
+                                                    &lt;td&gt;{{ <span>$</span>book-&gt;price }}&lt;/td&gt;
+                                                    &lt;td class="text-center"&gt;
+                                                        &lt;form action="{{ route('books.destroy', <span>$</span>book-&gt;id) }}" method="POST"&gt;
+                                                            &lt;a class="btn btn-info" href="{{ route('books.show', <span>$</span>book-&gt;id) }}"&gt;Show&lt;/a&gt;
+                                                            &lt;a class="btn btn-primary" href="{{ route('books.edit', <span>$</span>book-&gt;id) }}"&gt;Edit&lt;/a&gt;
+                                                            <span>@</span>csrf
+                                                            <span>@</span>method('DELETE')
+                                                            &lt;button type="submit" class="btn btn-danger"&gt;Delete&lt;/button&gt;
+                                                        &lt;/form&gt;
+                                                    &lt;/td&gt;
+                                                &lt;/tr&gt;
+                                            <span>@</span>endforeach
+                                            &lt;caption&gt;
+                                                {!! <span>$</span>books-&gt;links('pagination::bootstrap-4') !!}
+                                            &lt;/caption&gt;
+                                        &lt;/table&gt;
+                        
+                                    &lt;/div&gt;
+                                &lt;/div&gt;
+                            &lt;/div&gt;
+                        
+                        <span>@</span>endsection
+                        </span></div></code></pre>
+                    <button id="btn-10" data-toggle="tooltip" data-placement="top"
+                        onclick="CopyToClipboard('cmd-10','btn-10')" class="md:block hidden copyBtn"
+                        title="Copy to Clipboard">
+                         <i class="fa fa-clipboard"></i>
+                    </button>
+
+                </div>
+            </div>
+        </div>
+        <div class="row mt-2">
+            <div class="col-md-12">
+                <h6 class="text-primary">create.blade.php
+                </h6>
+                <p class="text-success">Path – resources/views/books/create.blade.php</p>
+                <div class="relative code-block-wrapper">
+                    <pre><code class="torchlight language-HTML"  ><div class="line"><span style="color: #BFC7D5;" id="cmd-11">
+                        @extends('books.layout')
+
+                        @section('content')
+                        &lt;div class="row"&gt;
+                            &lt;div class="col-lg-12 "&gt;
+                                &lt;div class="pull-left"&gt;
+                                    &lt;h2&gt;Add New Book&lt;/h2&gt;
+                                &lt;/div&gt;
+                                &lt;div class="pull-right"&gt;
+                                    &lt;a class="btn btn-primary" href="{{ route('books.index') }}"&gt; Back&lt;/a&gt;
+                                &lt;/div&gt;
+                            &lt;/div&gt;
+                        &lt;/div&gt;
+                        
+                        @if ($errors-&gt;any())
+                            &lt;div class="alert alert-danger"&gt;
+                                There were some problems with your input.&lt;br&gt;&lt;br&gt;
+                                &lt;ul&gt;
+                                    @foreach ($errors-&gt;all() as $error)
+                                        &lt;li&gt;{{ $error }}&lt;/li&gt;
+                                    @endforeach
+                                &lt;/ul&gt;
+                            &lt;/div&gt;
+                        @endif
+                        
+                        &lt;form action="{{ route('books.store') }}" method="POST"&gt;
+                            @csrf
+                        
+                             &lt;div class="row"&gt;
+                                &lt;div class="col-xs-12 col-sm-12 col-md-12"&gt;
+                                    &lt;div class="form-group"&gt;
+                                        &lt;strong&gt;Title:&lt;/strong&gt;
+                                        &lt;input type="text" name="title" class="form-control" placeholder="Title"&gt;
+                                    &lt;/div&gt;
+                                &lt;/div&gt;
+                                &lt;div class="col-xs-12 col-sm-12 col-md-12"&gt;
+                                    &lt;div class="form-group"&gt;
+                                        &lt;strong&gt;Description:&lt;/strong&gt;
+                                        &lt;textarea class="form-control" style="height:150px" name="description" placeholder="Description"&gt;&lt;/textarea&gt;
+                                    &lt;/div&gt;
+                                &lt;/div&gt;
+                                &lt;div class="col-xs-12 col-sm-12 col-md-12"&gt;
+                                    &lt;div class="form-group"&gt;
+                                        &lt;strong&gt;Author:&lt;/strong&gt;
+                                        &lt;input type="text" name="author" class="form-control" placeholder="Author"&gt;
+                                    &lt;/div&gt;
+                                &lt;/div&gt;
+                                &lt;div class="col-xs-12 col-sm-12 col-md-12"&gt;
+                                    &lt;div class="form-group"&gt;
+                                        &lt;strong&gt;Price:&lt;/strong&gt;
+                                        &lt;input type="text" name="price" class="form-control" placeholder="Price"&gt;
+                                    &lt;/div&gt;
+                                &lt;/div&gt;
+                                &lt;div class="col-xs-12 col-sm-12 col-md-12 text-center"&gt;
+                                        &lt;button type="submit" class="btn btn-primary"&gt;Submit&lt;/button&gt;
+                                &lt;/div&gt;
+                            &lt;/div&gt;
+                        
+                        &lt;/form&gt;
+                        @endsection
+                        </span></div></code></pre>
+                    <button id="btn-11" data-toggle="tooltip" data-placement="top"
+                        onclick="CopyToClipboard('cmd-11','btn-11')" class="md:block hidden copyBtn"
+                        title="Copy to Clipboard">
+                         <i class="fa fa-clipboard"></i>
+                    </button>
+
+                </div>
+            </div>
+        </div>
+        <div class="row mt-2">
+            <div class="col-md-12">
+                <h6 class="text-primary">edit.blade.php
+                </h6>
+                <p class="text-success">Path – resources/views/books/edit.blade.php</p>
+                <div class="relative code-block-wrapper">
+                    <pre><code class="torchlight language-HTML"  ><div class="line"><span style="color: #BFC7D5;" id="cmd-12">
+                        @extends('books.layout')
+
+                        @section('content')
+                            &lt;div class="row"&gt;
+                                &lt;div class="col-lg-12 margin-tb"&gt;
+                        
+                                        &lt;h2&gt;Edit Book&lt;/h2&gt;
+                        
+                        
+                                        &lt;a class="btn btn-primary" href="{{ route('books.index') }}"&gt; Back&lt;/a&gt;
+                        
+                                &lt;/div&gt;
+                            &lt;/div&gt;
+                        
+                            @if ($errors-&gt;any())
+                                &lt;div class="alert alert-danger"&gt;
+                                There were some problems with your input.&lt;br&gt;&lt;br&gt;
+                                    &lt;ul&gt;
+                                        @foreach ($errors-&gt;all() as $error)
+                                            &lt;li&gt;{{ $error }}&lt;/li&gt;
+                                        @endforeach
+                                    &lt;/ul&gt;
+                                &lt;/div&gt;
+                            @endif
+                        
+                            &lt;form action="{{ route('books.update',$book-&gt;id) }}" method="POST"&gt;
+                                @csrf
+                                @method('PUT')
+                        
+                                 &lt;div class="row"&gt;
+                                    &lt;div class="col-xs-12 col-sm-12 col-md-12"&gt;
+                                        &lt;div class="form-group"&gt;
+                                            &lt;strong&gt;Title:&lt;/strong&gt;
+                        
+                                            &lt;input type="text" value="{{ $book-&gt;title }}" name="title" class="form-control" placeholder="Title"&gt;
+                                        &lt;/div&gt;
+                                    &lt;/div&gt;
+                                    &lt;div class="col-xs-12 col-sm-12 col-md-12"&gt;
+                                        &lt;div class="form-group"&gt;
+                            &lt;strong&gt;Description:&lt;/strong&gt;
+                          &lt;textarea class="form-control" style="height:150px" name="description" placeholder="Description"&gt;{{ $book-&gt;description }}&lt;/textarea&gt;
+                                        &lt;/div&gt;
+                                    &lt;/div&gt;
+                                    &lt;div class="col-xs-12 col-sm-12 col-md-12"&gt;
+                                        &lt;div class="form-group"&gt;
+                                            &lt;strong&gt;Author:&lt;/strong&gt;
+                                            &lt;input type="text" name="author" class="form-control" value="{{$book-&gt;author}}" placeholder="Author"&gt;
+                                        &lt;/div&gt;
+                                    &lt;/div&gt;
+                                    &lt;div class="col-xs-12 col-sm-12 col-md-12"&gt;
+                                        &lt;div class="form-group"&gt;
+                                            &lt;strong&gt;Price:&lt;/strong&gt;
+                                            &lt;input type="text" name="price" class="form-control" value="{{$book-&gt;price}}" placeholder="Price"&gt;
+                                        &lt;/div&gt;
+                                    &lt;/div&gt;
+                                    &lt;div class="col-xs-12 col-sm-12 col-md-12 text-center"&gt;
+                                      &lt;button type="submit" class="btn btn-primary"&gt;Submit&lt;/button&gt;
+                                    &lt;/div&gt;
+                                &lt;/div&gt;
+                        
+                            &lt;/form&gt;
+                        @endsection
+                        
+                        </span></div></code></pre>
+                    <button id="btn-12" data-toggle="tooltip" data-placement="top"
+                        onclick="CopyToClipboard('cmd-12','btn-12')" class="md:block hidden copyBtn"
+                        title="Copy to Clipboard">
+                         <i class="fa fa-clipboard"></i>
+                    </button>
+
+                </div>
+            </div>
+        </div>
+        <div class="row mt-2">
+            <div class="col-md-12">
+                <h6 class="text-primary">show.blade.php
+                </h6>
+                <p class="text-success">Path – resources/views/books/show.blade.php</p>
+                <div class="relative code-block-wrapper">
+                    <pre><code class="torchlight language-HTML"  ><div class="line"><span style="color: #BFC7D5;" id="cmd-13">
+                        @extends('books.layout')
+
+                        @section('content')
+                            &lt;div class="row"&gt;
+                                &lt;div class="col-lg-12 margin-tb"&gt;
+                                    &lt;div class="pull-left"&gt;
+                                        &lt;h2&gt; Show Book&lt;/h2&gt;
+                                    &lt;/div&gt;
+                                    &lt;div class="pull-right"&gt;
+                                        &lt;a class="btn btn-primary" href="{{ route('books.index') }}"&gt; Back&lt;/a&gt;
+                                    &lt;/div&gt;
+                                &lt;/div&gt;
+                            &lt;/div&gt;
+                        
+                            &lt;div class="row"&gt;
+                                &lt;div class="col-xs-12 col-sm-12 col-md-12"&gt;
+                                    &lt;div class="form-group"&gt;
+                                        &lt;strong&gt;Title:&lt;/strong&gt;
+                                        {{ $book-&gt;title }}
+                                    &lt;/div&gt;
+                                &lt;/div&gt;
+                                &lt;div class="col-xs-12 col-sm-12 col-md-12"&gt;
+                                    &lt;div class="form-group"&gt;
+                                        &lt;strong&gt;Description:&lt;/strong&gt;
+                                        {{ $book-&gt;description }}
+                                    &lt;/div&gt;
+                                &lt;/div&gt;
+                                &lt;div class="col-xs-12 col-sm-12 col-md-12"&gt;
+                                    &lt;div class="form-group"&gt;
+                                        &lt;strong&gt;Author&lt;/strong&gt;
+                                        {{ $book-&gt;author }}
+                                    &lt;/div&gt;
+                                &lt;/div&gt;
+                                &lt;div class="col-xs-12 col-sm-12 col-md-12"&gt;
+                                    &lt;div class="form-group"&gt;
+                                        &lt;strong&gt;Price&lt;/strong&gt;
+                                        {{ $book-&gt;price }}
+                                    &lt;/div&gt;
+                                &lt;/div&gt;
+                            &lt;/div&gt;
+                        @endsection
+                        </span></div></code></pre>
+                    <button id="btn-13" data-toggle="tooltip" data-placement="top"
+                        onclick="CopyToClipboard('cmd-13','btn-13')" class="md:block hidden copyBtn"
+                        title="Copy to Clipboard">
+                         <i class="fa fa-clipboard"></i>
+                    </button>
+
+                </div>
+            </div>
+        </div>
+        <div class="row mt-2">
+            <div class="col-12">
+                <h2 class="Title">VII- Run CRUD application :</h2>
+                <h6>Now the final step in Laravel 8 tutorial CRUD you need to run the CRUD application using this command </h6>
+            </div>
+            <div class="col-md-8">
+    
+                <div class="relative code-block-wrapper">
+                    <pre><code class="torchlight language-HTML"  ><div class="line"><span style="color: #BFC7D5;" id="cmd-14">php artisan serve</span></div></code></pre>
+                    <button id="btn-14" data-toggle="tooltip" data-placement="top"
+                        onclick="CopyToClipboard('cmd-14','btn-14')" class="md:block hidden copyBtn"
+                        title="Copy to Clipboard">
+                         <i class="fa fa-clipboard"></i>
+                    </button>
+
+                </div>
+                <h6>Now you can open the below URL on your browser: <a href="http://127.0.0.1:8000/books" target="_blank">http://127.0.0.1:8000/books</a></h6>
+                
+            </div>
+            
+        </div>
+        <div class="row mt-2">
+            <div class="col-12">
+                <h2 class="Title">VIII- Run CRUD application :</h2>
+                <h6>Now the final step in Laravel 8 tutorial CRUD you need to run the CRUD application using this command </h6>
+            </div>
+            <div class="col-md-8">
+    
+                <div class="relative code-block-wrapper">
+                    <pre><code class="torchlight language-HTML"  ><div class="line"><span style="color: #BFC7D5;" id="cmd-14">php artisan serve</span></div></code></pre>
+                    <button id="btn-14" data-toggle="tooltip" data-placement="top"
+                        onclick="CopyToClipboard('cmd-14','btn-14')" class="md:block hidden copyBtn"
+                        title="Copy to Clipboard">
+                         <i class="fa fa-clipboard"></i>
+                    </button>
+
+                </div>
+                <h6>Now you can open the below URL on your browser: <a href="http://127.0.0.1:8000/books" target="_blank">http://127.0.0.1:8000/books</a></h6>
+                
+            </div>
+            
+        </div>
+
+
+    </div>
+    </div>
+</body>
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.3.0/css/all.min.css" integrity="sha512-SzlrxWUlpfuzQ+pcUCosxcglQRNAq/DZjVsC0lE40xsADsfeQoEypE+enwcOiGjk/bSuGGKHEyjSoQ1zVisanQ==" crossorigin="anonymous" referrerpolicy="no-referrer" /><script src="./public/js/app.js">
+    
+</script>
+<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"
+    integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN" crossorigin="anonymous">
+</script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/js/bootstrap.min.js"
+    integrity="sha384-+sLIOodYLS7CIrQpBjl+C7nPvqq+FbNUBDunl/OZv93DB7Ln/533i8e/mZXLi/P+" crossorigin="anonymous">
+</script>
+
+</html>
