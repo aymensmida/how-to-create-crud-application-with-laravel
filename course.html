@@ -185,7 +185,7 @@
 
                 </div>
 
-                <h6>Go to the path:<span class="text-primary">app/Http/Controllers/UserController.php</span> And update
+                <h6>Go to the path:<span class="text-primary">app/Http/Controllers/BookController.php</span> And update
                     the code as follows</h6>
                 <div class="relative code-block-wrapper">
                     <pre><code class="torchlight language-HTML"  ><div class="line"><span style="color: #BFC7D5;" id="cmd-7">&lt;?php
@@ -273,7 +273,7 @@ class BookController extends Controller
         ]);
         $book->update($request->all());
         return redirect()->route('books.index')
-                        ->with('success','User updated successfully');
+                        ->with('success','Book updated successfully');
     }
 
     /**
